@@ -9,7 +9,7 @@ WORKDIR /home/builder
 
 RUN git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm
 
-RUN yay -S --noconfirm rider libxtst libxrender font-manager dotnet-sdk aspnet-runtime aspnet-runtime-8.0 dotnet-sdk-8.0 azure-functions-core-tools-bin
+RUN yay -S --noconfirm rider libxtst azure-cli libxrender font-manager dotnet-sdk aspnet-runtime aspnet-runtime-8.0 dotnet-sdk-8.0 azure-functions-core-tools-bin
 
 RUN wget -qO- https://aka.ms/install-artifacts-credprovider.sh | bash
 
