@@ -1,6 +1,6 @@
 #! /usr/bin/env sh
 
-distrobox create --additional-packages "systemd docker" --name dotnet-dev --init --image arch-dotnet:latest --unshare-all
+distrobox create --name dotnet-dev --image arch-dotnet:latest
 
 # After entering add the user to the docker group and restart the distrobox
 # How much of this can I get into the image?

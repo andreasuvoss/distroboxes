@@ -1,7 +1,9 @@
 FROM archlinux:latest
 
 RUN pacman -Syu --noconfirm
+RUN pacman -Syy --noconfirm
 RUN pacman -S --needed git base-devel --noconfirm 
+RUN pacman -S --noconfirm docker docker-compose docker-buildx
 RUN useradd -m -G wheel builder && echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 USER builder
@@ -9,9 +11,11 @@ WORKDIR /home/builder
 
 RUN git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm
 
-RUN yay -S --noconfirm rider libxtst libxrender font-manager dotnet-sdk aspnet-runtime aspnet-runtime-8.0 dotnet-sdk-8.0 azure-functions-core-tools-bin
+RUN yay -S --noconfirm rider libxtst libxrender font-manager dotnet-sdk aspnet-runtime aspnet-runtime-8.0 dotnet-sdk-8.0 azure-functions-core-tools-bin azure-cli libxkbfile libbsd android-studio nodejs npm chromium
 
-RUN yay -S --noconfirm azure-cli docker-compose chromium
+# RUN yay -S --noconfirm azure-cli chromium
+#
+# RUN yay -S --noconfirm nodejs npm
 
 RUN wget -qO- https://aka.ms/install-artifacts-credprovider.sh | bash
 
