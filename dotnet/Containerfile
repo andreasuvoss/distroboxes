@@ -11,14 +11,18 @@ WORKDIR /home/builder
 
 RUN git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm
 
-RUN yay -S --noconfirm rider libxtst libxrender font-manager dotnet-sdk aspnet-runtime aspnet-runtime-8.0 dotnet-sdk-8.0 azure-functions-core-tools-bin azure-cli libxkbfile libbsd android-studio nodejs npm chromium
-
-# RUN yay -S --noconfirm azure-cli chromium
-#
-# RUN yay -S --noconfirm nodejs npm
-
+# .NET stack
+RUN yay -S --noconfirm rider dotnet-sdk aspnet-runtime aspnet-runtime-8.0 dotnet-sdk-8.0 azure-functions-core-tools-bin
+RUN dotnet tool install --global dotnet-ef
 RUN wget -qO- https://aka.ms/install-artifacts-credprovider.sh | bash
 
-RUN dotnet tool install --global dotnet-ef
+# Microsoft tools
+RUN yay -S --noconfirm azure-cli bicep-bin 
+
+# JS stack
+RUN yay -S --noconfirm nodejs npm
+
+# Android specific tooling
+# RUN yay -S --noconfirm libxtst libxrender font-manager libxkbfile libbsd android-studio
 
 USER root
