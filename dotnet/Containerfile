@@ -6,6 +6,9 @@ RUN pacman -S --needed git base-devel --noconfirm
 RUN pacman -S --noconfirm docker docker-compose docker-buildx
 RUN useradd -m -G wheel builder && echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
+RUN pacman -S --noconfirm glibc glibc-locales
+RUN sed -i -e 's/#en_DK.UTF-8/en_DK.UTF-8/g' /etc/locale.gen
+
 USER builder
 WORKDIR /home/builder
 
