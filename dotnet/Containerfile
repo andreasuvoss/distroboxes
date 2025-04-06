@@ -20,9 +20,9 @@ RUN wget -qO- https://aka.ms/install-artifacts-credprovider.sh | bash
 RUN yay -S --noconfirm azure-cli bicep-bin 
 
 # JS stack
-RUN yay -S --noconfirm nodejs npm
+RUN yay -S --noconfirm nodejs npm yarn
 
 # Android specific tooling
-# RUN yay -S --noconfirm libxtst libxrender font-manager libxkbfile libbsd android-studio
+# RUN yay -S --noconfirm libxtst libxrender font-manager libxkbfile libbsd android-studio nss libpulse
 
 USER root
