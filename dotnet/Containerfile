@@ -19,6 +19,9 @@ RUN yay -S --noconfirm rider dotnet-sdk aspnet-runtime aspnet-runtime-8.0 dotnet
 RUN dotnet tool install --global dotnet-ef
 RUN wget -qO- https://aka.ms/install-artifacts-credprovider.sh | bash
 
+# Rider dependencies
+RUN yay -S --noconfirm libxkbcommon font-manager
+
 # Microsoft tools
 RUN yay -S --noconfirm azure-cli bicep-bin 
 
